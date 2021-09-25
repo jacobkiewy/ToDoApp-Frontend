@@ -1,0 +1,176 @@
+<div *ngIf="toDo">
+  <div class="row justify-content-center" *ngIf="toDo.priority1 == true">
+    <div
+      class="card mb-1 bg-danger"
+      *ngIf="toDo.priority1 == true"
+      style="max-width: 650px"
+    >
+      <div class="row g-0">
+        <div class="col-md-8">
+          <div class="card-body" *ngIf="toDo">
+            <h5 class="card-title text-white">{{ toDo.title }}</h5>
+            <p class="card-text text-white">{{ toDo.description }}</p>
+            <p class="card-text">
+              <small class="text-muted" style="color: white !important"
+                >{{ toDo.startingDate | date }} --
+                {{ toDo.endingDate | date }}</small
+              >
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4 d-flex justify-content-center align-items-center">
+          <i
+            class="fas fa-lg fa-flag"
+            style="
+              color: black;
+              font-size: 10rem;
+              overflow: hidden;
+              opacity: 20%;
+            "
+          ></i>
+        </div>
+      </div>
+    </div>
+    <div
+      class="btn-group p-0"
+      role="group"
+      aria-label="Basic outlined example"
+      style="max-width: 650px"
+    >
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        data-bs-toggle="modal"
+        [disabled]="!toDo.status"
+        data-bs-target="#toDoUpdate"
+      >
+        Güncelle
+      </button>
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        [disabled]="!toDo.status"
+        (click)="toDoCompleted()"
+      >
+        {{ toDo.status === false ? "Tamamlandı" : "Tamamla" }}
+      </button>
+    </div>
+    <app-todo-update [toDoForUpdate]="toDo"></app-todo-update>
+  </div>
+  <div class="row justify-content-center" *ngIf="toDo.priority2 == true">
+    <div
+      class="card mb-1 bg-info"
+      *ngIf="toDo.priority2 == true"
+      style="max-width: 650px"
+    >
+      <div class="row g-0">
+        <div class="col-md-8">
+          <div class="card-body" *ngIf="toDo">
+            <h5 class="card-title">{{ toDo.title }}</h5>
+            <p class="card-text fw-normal">{{ toDo.description }}</p>
+            <p class="card-text">
+              <small class="text-muted" style="color: white !important"
+                >{{ toDo.startingDate | date }} --
+                {{ toDo.endingDate | date }}</small
+              >
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4 d-flex justify-content-center align-items-center">
+          <i
+            class="fas fa-lg fa-flag"
+            style="
+              color: black;
+              font-size: 10rem;
+              overflow: hidden;
+              opacity: 20%;
+            "
+          ></i>
+        </div>
+      </div>
+    </div>
+    <div
+      class="btn-group p-0"
+      role="group"
+      aria-label="Basic outlined example"
+      style="max-width: 650px"
+    >
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        data-bs-toggle="modal"
+        [disabled]="!toDo.status"
+        data-bs-target="#toDoUpdate"
+      >
+        Güncelle
+      </button>
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        [disabled]="!toDo.status"
+        (click)="toDoCompleted()"
+      >
+      {{ toDo.status === false ? "Tamamlandı" : "Tamamla" }}
+      </button>
+    </div>
+    <app-todo-update [toDoForUpdate]="toDo"></app-todo-update>
+  </div>
+  <div class="row justify-content-center" *ngIf="toDo.priority3 == true">
+    <div
+      class="card mb-1 bg-dark"
+      *ngIf="toDo.priority3 == true"
+      style="max-width: 650px"
+    >
+      <div class="row g-0">
+        <div class="col-md-8">
+          <div class="card-body" *ngIf="toDo">
+            <h5 class="card-title text-white">{{ toDo.title }}</h5>
+            <p class="card-text text-white">{{ toDo.description }}</p>
+            <p class="card-text">
+              <small class="text-muted" style="color: white !important"
+                >{{ toDo.startingDate | date }} --
+                {{ toDo.endingDate | date }}</small
+              >
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4 d-flex justify-content-center align-items-center">
+          <i
+            class="fas fa-lg fa-flag"
+            style="
+              color: white;
+              font-size: 10rem;
+              overflow: hidden;
+              opacity: 20%;
+            "
+          ></i>
+        </div>
+      </div>
+    </div>
+    <div
+      class="btn-group p-0"
+      role="group"
+      aria-label="Basic outlined example"
+      style="max-width: 650px"
+    >
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        data-bs-toggle="modal"
+        [disabled]="!toDo.status"
+        data-bs-target="#toDoUpdate"
+      >
+        Güncelle
+      </button>
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        [disabled]="!toDo.status"
+        (click)="toDoCompleted()"
+      >
+      {{ toDo.status === false ? "Tamamlandı" : "Tamamla" }}
+      </button>
+    </div>
+  </div>
+  <app-todo-update [toDoForUpdate]="toDo"></app-todo-update>
+</div>

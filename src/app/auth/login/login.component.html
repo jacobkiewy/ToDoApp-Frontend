@@ -1,0 +1,46 @@
+<style>
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+</style>
+<body class="text-center">
+  <main class="form-signin">
+    <form [formGroup]="loginForm">
+      <h1 class="h3 mb-3 fw-normal">Giriş Yap</h1>
+      <div class="form-floating">
+        <input
+          type="email"
+          formControlName="email"
+          class="form-control"
+          id="email"
+          placeholder="name@example.com"
+        />
+        <label for="email">Email</label>
+      </div>
+      <div class="form-floating">
+        <input
+          type="password"
+          class="form-control"
+          formControlName="password"
+          id="password"
+          placeholder="Password"
+        />
+        <label for="password">Password</label>
+      </div>
+      <button class="w-100 btn btn-lg btn-primary" (click)="login()"type="submit">
+        Giriş
+      </button>
+      <p class="mt-5 mb-3 text-muted">ToDoApp &copy; 2017–2021</p>
+    </form>
+  </main>
+</body>
