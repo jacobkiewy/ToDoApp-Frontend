@@ -15,7 +15,6 @@ export class TodoService {
 
   toDoAdd(toDo: ToDo) {
     let newPath = this.apiUrl + '/todo/add';
-    console.log("service")
     return this.httpClient.post<ResponseModel>(newPath, toDo);
   }
 

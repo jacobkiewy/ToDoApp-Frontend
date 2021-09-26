@@ -34,7 +34,6 @@ export class TodoUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.nDate = this.dh.dateHelper(this.toDoForUpdate.startingDate);
     this.createToDoUpdateForm();
-    // console.log(this.toDoForUpdate)
   }
 
   createToDoUpdateForm() {

@@ -44,7 +44,8 @@ export class TodoComponent implements OnInit {
 
   replace(Id: number) {
     let cryptoEncode = this.cryptoHelper.encrypted(Id.toString());
-    this.router.navigate(['user/TodoDetail/' + cryptoEncode], {
+    let urlEncode = encodeURIComponent(cryptoEncode)
+    this.router.navigate(['user/TodoDetail/' + urlEncode], {
       replaceUrl: true,
     });
   }

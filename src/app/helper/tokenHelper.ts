@@ -1,9 +1,13 @@
+import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import jwtDecode from 'jwt-decode';
+import { ToastrService } from 'ngx-toastr';
 import { CryptoHelper } from './cryptoHelper';
 
 export class TokenHelper {
   cryptoHelper: CryptoHelper = new CryptoHelper();
+  toastrService:ToastrService
+  router:Router
 
   decodeToken() {
     const helper = new JwtHelperService();
@@ -43,8 +47,15 @@ export class TokenHelper {
       this.decodeToken()[
         'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'
       ];
-      // console.log("ıd hatası")  
-    return userId;
+      if (userId != undefined) {
+        return userId
+      }
+      else{
+        console.log("userId yok")
+        this.toastrService.error('','Kullanıcı Yok')
+        this.router.navigate(['auth/login', {replaceUrl:true}])
+      }
+    // return userId;
   }
   userRoleExp() {
     let exp = this.decodeToken()['exp'];

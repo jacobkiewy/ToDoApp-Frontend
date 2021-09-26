@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CryptoHelper } from 'src/app/helper/cryptoHelper';
 import { ToDo } from 'src/app/models/toDo';
@@ -16,7 +16,8 @@ export class TodoDetailComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private toastrService: ToastrService,
-    private toDoService: TodoService
+    private toDoService: TodoService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -26,13 +27,25 @@ export class TodoDetailComponent implements OnInit {
   }
 
   getToDo(Id: number) {
-    let decodeId = +this.cryptoHelper.decrypted(Id.toString());
-    this.toDoService.getToDo(decodeId).subscribe((response) => {
-      this.toDo = response.data;
-      response.data.status === false
-        ? this.toastrService.info('', "Bu ToDo'yu Tamamladın")
-        : null;
-    });
+    try {
+      let urlDecode = decodeURIComponent(Id.toString());
+      let decodeId = +this.cryptoHelper.decrypted(urlDecode);
+      if (decodeId === 0 || decodeId === null || decodeId === undefined) {
+        this.router.navigate(['**']);
+      }
+      this.toDoService.getToDo(decodeId).subscribe((response) => {
+        this.toDo = response.data;
+        try {
+          response.data.status === false
+            ? this.toastrService.info('', "Bu ToDo'yu Tamamladın")
+            : null;
+        } catch (error) {
+          this.toastrService.error('','Çok Kurcalama Burları Hepsini Kontrol Ettim')
+        }
+      });
+    } catch (error) {
+      this.router.navigate(['**']);
+    }
   }
   toDoCompleted() {
     this.toDo.status = false;
