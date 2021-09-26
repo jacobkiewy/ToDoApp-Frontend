@@ -34,4 +34,13 @@ export class TodoCompletedComponent implements OnInit {
       });
     });
   }
+
+  toDoDeleted(toDo: ToDo) {
+    this.toDoService.toDoDelete(toDo).subscribe((resposne) => {
+      this.toastrService.warning('', resposne.message);
+      setTimeout(() => {
+        window.location.reload();
+      }, 1250);
+    });
+  }
 }

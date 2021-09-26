@@ -73,7 +73,6 @@ export class TodoUpdateComponent implements OnInit {
           this.toastrService.error('',responseError.error.Errors[i].ErrorMessage);
           
         }
-        console.log(responseError.error.Errors[0].ErrorMessage)
       });
     } else {
       this.toastrService.error('', 'Boş Alan Bırakmayınız!!');

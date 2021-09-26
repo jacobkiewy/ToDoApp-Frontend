@@ -6,11 +6,102 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          
+          <form [formGroup]="toDoAddForm">
+            <div class="row">
+              <div class="col-md-12">
+                <label for="title">Başlık</label>
+                <input
+                  type="text"
+                  name="title"
+                  formControlName="title"
+                  id="title"
+                  class="form-control"
+                  value=""
+                />
+              </div>
+              <div class="col-md-12 mt-2">
+                <label for="description">Açıklama</label>
+                <textarea
+                  type="text"
+                  formControlName="description"
+                  cols="4"
+                  id="description"
+                  class="form-control"
+                  value=""
+                ></textarea>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-4 d-flex justify-content-center">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    formControlName="priorityRadio"
+                    value="p1"
+                    id="priority1"
+                  />
+                  <label class="form-check-label" for="priority1">
+                    Öncelik 1
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-4 form-check d-flex justify-content-center">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    formControlName="priorityRadio"
+                    value="p2"
+                    id="priority2"
+                  />
+                  <label class="form-check-label" for="priority2">
+                    Öncelik 2
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-4 form-check d-flex justify-content-center">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    formControlName="priorityRadio"
+                    value="p3"
+                    id="priority3"
+                  />
+                  <label class="form-check-label" for="priority3">
+                    Öncelik 3
+                  </label>
+                </div>
+              </div>
+              <!-- {{priorityRadio.value}} -->
+            </div>
+            <div class="row mt-2">
+              <div class="col-md-6">
+                <label for="satartingDate">Başlangıç Tarihi</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  formControlName="startingDate"
+                  value=""
+                  id="startingDate"
+                />
+              </div>
+              <div class="col-md-6">
+                <label for="endingDate">Bitiş Tarihi</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  formControlName="endingDate"
+                  id="endingDate"
+                />
+              </div>
+            </div>
+          </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
-          <button type="button" class="btn btn-primary">Ekle</button>
+          <button type="button" class="btn btn-primary" (click)="toDoAdd()">Ekle</button>
         </div>
       </div>
     </div>

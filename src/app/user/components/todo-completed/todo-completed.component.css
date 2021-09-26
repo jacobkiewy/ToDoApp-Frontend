@@ -2,3 +2,7 @@
     position: relative;
     justify-content: center;
 }
+.fa-trash:hover{
+    transition: .5s all ease;
+    color: #c0392b;
+}
