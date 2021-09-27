@@ -17,19 +17,20 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  cryptoHelper:CryptoHelper = new CryptoHelper()
+  loaded:boolean
+  cryptoHelper: CryptoHelper = new CryptoHelper();
 
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
-    private router:Router,
+    private router: Router,
     private toastrService: ToastrService
   ) {}
 
   ngOnInit(): void {
     this.createLoginForm();
     if (this.authService.isAuthenticated()) {
-      this.router.navigate(['user/todo'])
+      this.router.navigate(['user/todo']);
     }
   }
 
@@ -41,21 +42,33 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    this.loaded = false
     if (this.loginForm.valid) {
       let loginModel = Object.assign({}, this.loginForm.value);
       this.authService.login(loginModel).subscribe(
         (response) => {
-          let encodeToken = this.cryptoHelper.encrypted(response.data.token)
-          localStorage.setItem('token',encodeToken)
+          this.loaded = false
+          let encodeToken = this.cryptoHelper.encrypted(response.data.token);
+          localStorage.setItem('token', encodeToken);
           this.toastrService.success('', response.message);
-          this.router.navigate(['user/todo'])
+          this.router.navigate(['user/todo']);
         },
         (responseError) => {
-          this.toastrService.error('',responseError.error)
+          this.loaded = true
+          if (responseError.status === 0) {
+            this.toastrService.error('', 'Sunucu Bağlantısı Yok!!');
+          } else {
+            this.toastrService.error('', responseError.error);
+          }
         }
       );
     } else {
+      this.loaded = true
       this.toastrService.error('', 'Boş Alan Bırakmayınız!');
     }
+  }
+
+  registerUrl(){
+    this.router.navigate(['auth/register'])
   }
 }

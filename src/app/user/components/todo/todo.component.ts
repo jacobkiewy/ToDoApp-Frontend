@@ -31,20 +31,26 @@ export class TodoComponent implements OnInit {
 
   getUserToDos() {
     let userId = this.tokenHelper.userId();
-    this.toDoService.getUserToDos(userId).subscribe((response) => {
-      response.data.forEach(toDo => {
-        if (toDo.status === true) {
-          this.toDos.push(toDo);
-        }
-      });
-      this.dataLoaded = true;
-      this.toastrService.info('', response.message);
-    });
+
+    this.toDoService.getUserToDos(userId).subscribe(
+      (response) => {
+          response.data.forEach((toDo) => {
+            if (toDo.status === true) {
+              this.toDos.push(toDo);
+            }
+          });
+          this.dataLoaded = true;
+          this.toastrService.info('', response.message);
+      },
+      (responseError) => {
+        this.toastrService.error('', 'Sunucu Bağlantısı Yok!');
+      }
+    );
   }
 
   replace(Id: number) {
     let cryptoEncode = this.cryptoHelper.encrypted(Id.toString());
-    let urlEncode = encodeURIComponent(cryptoEncode)
+    let urlEncode = encodeURIComponent(cryptoEncode);
     this.router.navigate(['user/TodoDetail/' + urlEncode], {
       replaceUrl: true,
     });

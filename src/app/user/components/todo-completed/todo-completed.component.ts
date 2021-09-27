@@ -32,6 +32,8 @@ export class TodoCompletedComponent implements OnInit {
           this.toDos.push(toDo);
         }
       });
+    },responseError => {
+      this.toastrService.error('','Sunucu Bağlantısı Yok!')
     });
   }
 

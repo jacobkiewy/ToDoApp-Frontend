@@ -26,6 +26,7 @@
                 name="title"
                 formControlName="title"
                 id="title"
+                maxlength="75"
                 class="form-control"
                 value="{{ toDoForUpdate.title }}"
               />
@@ -35,7 +36,8 @@
               <textarea
                 type="text"
                 formControlName="description"
-                cols="4"
+                rows="5"
+                maxlength="150"
                 id="description"
                 class="form-control"
                 value="{{ toDoForUpdate.description }}"

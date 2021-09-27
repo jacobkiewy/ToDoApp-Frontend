@@ -1,6 +1,6 @@
 export interface RegisterModel{
-    firstName:string,
-    LastName:string,
-    email:string,
-    passwor:string
+    email:string
+    password:string
+    firstName:string
+    lastName:string
 }
