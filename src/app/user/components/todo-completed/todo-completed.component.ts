@@ -26,9 +26,10 @@ export class TodoCompletedComponent implements OnInit {
   getCompletedToDos() {
     let userId = this.tokenHelper.userId();
     this.toDoService.getUserToDos(userId).subscribe((response) => {
+      this.dataLoaded = true
       response.data.forEach((toDo) => {
-        this.dataLoaded = true;
         if (toDo.status === false) {
+          this.dataLoaded = true;
           this.toDos.push(toDo);
         }
       });
