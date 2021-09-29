@@ -11,6 +11,8 @@ import { TodoUpdateComponent } from './components/todo-update/todo-update.compon
 import { TodoDetailComponent } from './components/todo-detail/todo-detail.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TodoCompletedComponent } from './components/todo-completed/todo-completed.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { FeedbackAddComponent } from './components/feedback-add/feedback-add.component';
 
 
 @NgModule({
@@ -21,10 +23,12 @@ import { TodoCompletedComponent } from './components/todo-completed/todo-complet
     TodoAddComponent,
     TodoUpdateComponent,
     TodoDetailComponent,
-    TodoCompletedComponent
+    TodoCompletedComponent,
+    FeedbackAddComponent
   ],
   imports: [
     CommonModule,
+    NgxPaginationModule,
     UserRoutingModule,
     FormsModule,
     ReactiveFormsModule,

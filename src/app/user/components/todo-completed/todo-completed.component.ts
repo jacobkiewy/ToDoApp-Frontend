@@ -10,6 +10,7 @@ import { TodoService } from 'src/app/services/todo/todo.service';
   styleUrls: ['./todo-completed.component.css'],
 })
 export class TodoCompletedComponent implements OnInit {
+  p:number = 1
   toDos: ToDo[] = [];
   tokenHelper: TokenHelper = new TokenHelper();
   dataLoaded: boolean = false;

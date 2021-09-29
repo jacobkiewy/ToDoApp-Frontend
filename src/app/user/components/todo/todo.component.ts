@@ -14,6 +14,7 @@ import { TodoService } from 'src/app/services/todo/todo.service';
   styleUrls: ['./todo.component.css'],
 })
 export class TodoComponent implements OnInit {
+  p:number = 1
   toDos: ToDo[] = [];
   dataLoaded = false;
   tokenHelper: TokenHelper = new TokenHelper();

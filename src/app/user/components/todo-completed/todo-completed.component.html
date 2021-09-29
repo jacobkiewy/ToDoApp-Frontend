@@ -11,7 +11,9 @@
         </div>
       </div>
       <li
-        *ngFor="let toDo of toDos"
+        *ngFor="
+          let toDo of toDos | paginate: { itemsPerPage: 6, currentPage: p }
+        "
         class="
           list-group-item list-group-item-action
           d-flex
@@ -20,7 +22,9 @@
       >
         <div class="d-grid">
           <h5>{{ toDo.title }}</h5>
-          <small>{{ toDo.description }}</small>
+          <small class="text-wrap text-break" style="width: 95%">{{
+            toDo.description
+          }}</small>
         </div>
         <div
           style="
@@ -30,10 +34,19 @@
             color: slategray;
           "
         >
-          <i class="fas fa-trash" (click)="toDoDeleted(toDo)" style="cursor: pointer; font-size: 1.75rem;"></i>
-
+          <i
+            class="fas fa-trash"
+            (click)="toDoDeleted(toDo)"
+            style="cursor: pointer; font-size: 1.75rem"
+          ></i>
         </div>
       </li>
     </div>
   </div>
+</div>
+<div class="d-flex justify-content-center">
+  <pagination-controls
+    (pageChange)="p = $event"
+    style="margin-right: 3rem; margin-top: 1.25rem"
+  ></pagination-controls>
 </div>

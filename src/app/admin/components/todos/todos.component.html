@@ -1,0 +1,56 @@
+<!-- <table class="table table-dark table-hover">
+  <thead>
+    <tr>
+      <th>Full Name</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Priority</th>
+      <th>Starting Date</th>
+      <th>Ending Date</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let toDo of toDos">
+      <td>{{ toDo.fullName }}</td>
+      <td>" {{ toDo.title }} "</td>
+      <td>{{ toDo.description }}</td>
+      <td>{{ toDo.p1 }}</td>
+      <td>{{ toDo.startingDate | date }}</td>
+      <td>{{ toDo.endingDate | date }}</td>
+      <td>{{ toDo.status }}</td>
+    </tr>
+  </tbody>
+</table> -->
+
+<div class="row">
+  <div
+    class="col-md-3"
+    *ngFor="
+      let toDo of toDos
+        | paginate: { itemsPerPage: 8, currentPage: p, totalItems: totalLength }
+    "
+  >
+    <div
+      class="card text-white 
+      {{ toDo.p1 === true ? 'bg-danger' : '' }} 
+      {{ toDo.p2 === true ? 'bg-info' : '' }} 
+      {{ toDo.p3 === true ? 'bg-dark' : '' }} mb-3"
+      style="max-width: 18rem; height: 18.5rem"
+    >
+      <div class="card-header border-light">{{ toDo.fullName }}</div>
+      <div class="card-body">
+        <h5 class="card-title">{{ toDo.title }}</h5>
+        <p class="card-text">
+          {{ toDo.description }}
+        </p>
+      </div>
+      <div class="card-footer bg-transparent border-light">
+        {{ toDo.startingDate | date }} -- {{ toDo.endingDate | date }}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="d-flex justify-content-center">
+  <pagination-controls (pageChange)="p = $event" style="margin-right: 3rem;"></pagination-controls>
+</div>

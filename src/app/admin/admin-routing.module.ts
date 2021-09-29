@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './admin.component';
+import { TodosComponent } from './components/todos/todos.component';
+import { UsersComponent } from './components/users/users.component';
 
 
 const routes: Routes = [
@@ -10,7 +12,11 @@ const routes: Routes = [
     children:[
       {
         path:'todos',
-        component:AdminComponent
+        component:TodosComponent
+      },
+      {
+        path:'users',
+        component:UsersComponent
       }
     ]
   }

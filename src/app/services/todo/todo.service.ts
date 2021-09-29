@@ -4,6 +4,7 @@ import { ListResponseModel } from 'src/app/models/listResponseModel';
 import { ResponseModel } from 'src/app/models/responseModel';
 import { SingleResponseModel } from 'src/app/models/singleResponseModel';
 import { ToDo } from 'src/app/models/toDo';
+import { ToDoDto } from 'src/app/models/toDoDto';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -13,8 +14,12 @@ export class TodoService {
   apiUrl = environment.baseUrl;
   constructor(private httpClient: HttpClient) {}
 
-  toDoAdd(toDo: ToDo) {
+  getAllToDos() {
+    let newPath = this.apiUrl + '/todo/getalldetails';
+    return this.httpClient.get<ListResponseModel<ToDoDto>>(newPath);
+  }
 
+  toDoAdd(toDo: ToDo) {
     let newPath = this.apiUrl + '/todo/add';
     return this.httpClient.post<ResponseModel>(newPath, toDo);
   }

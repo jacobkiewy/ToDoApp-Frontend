@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FeedbackAddComponent } from './components/feedback-add/feedback-add.component';
 import { TodoCompletedComponent } from './components/todo-completed/todo-completed.component';
 import { TodoDetailComponent } from './components/todo-detail/todo-detail.component';
 import { TodoUpdateComponent } from './components/todo-update/todo-update.component';
@@ -22,6 +23,10 @@ const routes: Routes = [
       {
         path:'TodoComplete',
         component:TodoCompletedComponent
+      },
+      {
+        path:'feedback-send',
+        component:FeedbackAddComponent
       }
     ]
   },

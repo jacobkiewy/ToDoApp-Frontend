@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -10,7 +10,7 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { UserLayoutComponent } from './layouts/user-layout/user-layout.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -20,25 +20,27 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     UserLayoutComponent,
   ],
   imports: [
+    NgxPaginationModule,
     BrowserModule,
+
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-        timeOut:2500,
-        extendedTimeOut:1000,
-        progressBar:true,
-        easing:'ease-in',
-        easeTime:300,
-        progressAnimation:'decreasing',
-        positionClass:'toast-bottom-right',
-        maxOpened:2,
-        autoDismiss:true
-      })
+      timeOut: 2500,
+      extendedTimeOut: 1000,
+      progressBar: true,
+      easing: 'ease-in',
+      easeTime: 300,
+      progressAnimation: 'decreasing',
+      positionClass: 'toast-bottom-right',
+      maxOpened: 2,
+      autoDismiss: true,
+    }),
   ],
   providers: [
-    {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
