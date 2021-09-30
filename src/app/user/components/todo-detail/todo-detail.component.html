@@ -12,8 +12,8 @@
             <p class="card-text text-white">{{ toDo.description }}</p>
             <p class="card-text">
               <small class="text-muted" style="color: white !important"
-                >{{ toDo.startingDate | date }} --
-                {{ toDo.endingDate | date }}</small
+                >{{ toDo.startingDate | filterDate }} --
+                {{ toDo.endingDate | filterDate }}</small
               >
             </p>
           </div>

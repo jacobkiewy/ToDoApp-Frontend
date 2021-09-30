@@ -13,7 +13,6 @@ export class AdminComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.router.navigate(['admin/todos'])
   }
 
 }

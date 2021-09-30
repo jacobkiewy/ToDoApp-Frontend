@@ -22,7 +22,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
   imports: [
     NgxPaginationModule,
     BrowserModule,
-
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,

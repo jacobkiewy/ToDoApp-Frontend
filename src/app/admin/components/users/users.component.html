@@ -1,18 +1,42 @@
+<div class="mb-3">
+  <label for="filterText" class="form-label">Arama</label>
+  <input
+    type="text"
+    [(ngModel)]="filterText"
+    class="form-control"
+    id="filterText"
+    placeholder="User"
+  />
+</div>
+<div *ngIf="filterText.length > 2" class="alert alert-success">
+  {{ filterText }} aradınız
+</div>
 <table class="table table-dark table-hover">
-    <thead>
-        <tr>
-            <th>User Id</th>
-            <th>Full Name</th>
-            <th>Email</th>
-            <th>Status</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let user of users">
-            <td>{{user.userId}}</td>
-            <td>{{user.fullName}}</td>
-            <td>{{user.email}}</td>
-            <td>{{user.status}}</td>
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th>User Id</th>
+      <th>Full Name</th>
+      <th>Email</th>
+      <th>Status</th>
+      <th>İşlemler</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users | filterUser: filterText">
+      <td>{{ user.userId }}</td>
+      <td>{{ user.fullName }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.status }}</td>
+      <td>
+        <button
+          (click)="update(user)"
+          class="btn btn-sm btn-{{
+            user.status === true ? 'success' : 'danger'
+          }}"
+        >
+          <i class="fas fa-{{ user.status === true ? 'check' : 'times' }}"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
 </table>

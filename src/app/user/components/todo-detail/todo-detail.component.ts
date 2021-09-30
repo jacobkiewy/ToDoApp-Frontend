@@ -52,9 +52,7 @@ export class TodoDetailComponent implements OnInit {
     this.toDoService.toDoUpdate(this.toDo).subscribe(
       (response) => {
         this.toastrService.success('', 'ToDo Tamamlandı ;)');
-        setTimeout(() => {
-          window.location.reload();
-        }, 1250);
+        this.router.navigate(['user/todo'])
       },
       (responseError) => {
         console.log(responseError);

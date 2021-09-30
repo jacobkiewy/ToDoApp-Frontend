@@ -45,6 +45,8 @@ export class FeedbackAddComponent implements OnInit {
       this.feedBackService.addFeedBack(feedBackModel).subscribe(response=>{
         this.toastrService.success('',response.message)
         this.router.navigate(['user/todo'])
+      },responseError => {
+        console.log(responseError)
       })
     }
     else{

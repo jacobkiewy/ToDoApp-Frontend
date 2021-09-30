@@ -9,12 +9,25 @@ import { TodosComponent } from './components/todos/todos.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { UsersComponent } from './components/users/users.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
+import { FilterUserPipe } from './pipes/filter-user.pipe';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FilterDatePipe } from './pipes/filter-date.pipe';
 
 @NgModule({
-  declarations: [AdminComponent, SideBarComponent, TodosComponent, UsersComponent, FeedbackComponent],
+  declarations: [
+    AdminComponent,
+    SideBarComponent,
+    TodosComponent,
+    UsersComponent,
+    FeedbackComponent,
+    FilterUserPipe,
+    FilterDatePipe,
+  ],
   imports: [
     CommonModule,
     NgxPaginationModule,
+    FormsModule,
+    ReactiveFormsModule,
     AdminRoutingModule,
     ToastrModule.forRoot({
       timeOut: 1000,

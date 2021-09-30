@@ -25,4 +25,8 @@ export class FeedbackService {
     let newPath = this.apiUrl + '/feedback/getall';
     return this.httpClient.get<ListResponseModel<FeedBack>>(newPath);
   }
+  updateFeedBack(feedBack:FeedBack){
+    let newPath = this.apiUrl +'/feedBack/update';
+    return this.httpClient.post<ResponseModel>(newPath,feedBack)
+  }
 }

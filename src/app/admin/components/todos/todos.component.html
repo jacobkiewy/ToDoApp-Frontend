@@ -1,28 +1,3 @@
-<!-- <table class="table table-dark table-hover">
-  <thead>
-    <tr>
-      <th>Full Name</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Priority</th>
-      <th>Starting Date</th>
-      <th>Ending Date</th>
-      <th>Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let toDo of toDos">
-      <td>{{ toDo.fullName }}</td>
-      <td>" {{ toDo.title }} "</td>
-      <td>{{ toDo.description }}</td>
-      <td>{{ toDo.p1 }}</td>
-      <td>{{ toDo.startingDate | date }}</td>
-      <td>{{ toDo.endingDate | date }}</td>
-      <td>{{ toDo.status }}</td>
-    </tr>
-  </tbody>
-</table> -->
-
 <div class="row">
   <div
     class="col-md-3"
@@ -46,7 +21,7 @@
         </p>
       </div>
       <div class="card-footer bg-transparent border-light">
-        {{ toDo.startingDate | date }} -- {{ toDo.endingDate | date }}
+        {{ toDo.startingDate | filterDate }} -- {{ toDo.endingDate | filterDate }}
       </div>
     </div>
   </div>

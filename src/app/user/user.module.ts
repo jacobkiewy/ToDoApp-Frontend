@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TodoCompletedComponent } from './components/todo-completed/todo-completed.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FeedbackAddComponent } from './components/feedback-add/feedback-add.component';
+import { FilterDatePipe } from './pipes/filter-date.pipe';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { FeedbackAddComponent } from './components/feedback-add/feedback-add.com
     TodoUpdateComponent,
     TodoDetailComponent,
     TodoCompletedComponent,
-    FeedbackAddComponent
+    FeedbackAddComponent,
+    FilterDatePipe
   ],
   imports: [
     CommonModule,

@@ -27,11 +27,6 @@ export class AuthService {
     return this.httpClient.post<SingleResponseModel<TokenModel>>(newPath, user);
   }
 
-  getAllUsers() {
-    let newPath = this.apiUrl + '/user/getallusers';
-    return this.httpClient.get<ListResponseModel<User>>(newPath);
-  }
-
   isAuthenticated() {
     if (this.tokenHelper.decodeToken() != false) {
       return true;

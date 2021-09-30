@@ -1,1 +1,40 @@
-<p>feedback works!</p>
+<div class="row">
+  <div
+    class="col-md-3"
+    *ngFor="
+      let feedBack of feedBacks | paginate: { itemsPerPage: 8, currentPage: p }
+    "
+  >
+    <div
+      class="card  text-white bg-secondary {{
+        feedBack.status === true ? 'bg-secondary' : ''
+      }} {{ feedBack.status === false ? 'bg-success' : '' }} mb-3"
+      style="max-width: 18rem; height: 18.5rem"
+    >
+      <div class="card-header border-light">{{ feedBack.fullName }}</div>
+      <div class="card-body">
+        <h5 class="card-title">{{ feedBack.title }}</h5>
+        <p class="card-text">
+          {{ feedBack.description }}
+        </p>
+      </div>
+      <div class="card-footer bg-transparent border-light d-flex justify-content-between align-items-center">
+        {{ feedBack.date | filterDate }}
+        <div>
+          <button class="btn btn-sm btn-danger" (click)="delete(feedBack)">
+            <i class="fas fa-sm fa-trash"></i>
+          </button>
+          <button class="btn btn-sm btn-warning" (click)="update(feedBack)" style="margin-left: 0.5rem;">
+            <i class="fas fa-sm fa-check"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="d-flex justify-content-center" *ngIf="feedBacks.length > 6">
+  <pagination-controls
+    (pageChange)="p = $event"
+    style="margin-right: 3rem"
+  ></pagination-controls>
+</div>

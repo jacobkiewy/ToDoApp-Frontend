@@ -1,12 +1,12 @@
 import { HttpParams, HttpUrlEncodingCodec } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import jwtDecode from 'jwt-decode';
 import { ToastrService } from 'ngx-toastr';
 import { CryptoHelper } from 'src/app/helper/cryptoHelper';
 import { TokenHelper } from 'src/app/helper/tokenHelper';
 import { ToDo } from 'src/app/models/toDo';
 import { TodoService } from 'src/app/services/todo/todo.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-todo',
@@ -28,6 +28,10 @@ export class TodoComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserToDos();
+    // let myMoment:moment.Moment = moment(Date.now()).locale("tr")
+    // let mm=moment('2021-09-30 15:00:55').locale('tr').fromNow()
+    // console.log(mm)
+    // console.log(myMoment.format('DD MMM dddd YYYY HH:mm:ss'))
   }
 
   getUserToDos() {
