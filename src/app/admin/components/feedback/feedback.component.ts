@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { FeedBack } from 'src/app/models/feedBack';
 import { FeedbackService } from 'src/app/services/feedBack/feedback.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-feedback',
@@ -12,6 +13,7 @@ import { FeedbackService } from 'src/app/services/feedBack/feedback.service';
 export class FeedbackComponent implements OnInit {
   feedBacks: FeedBack[] = [];
   p: number = 1;
+  imagePath = environment.feedBakcImageBasePath;
 
   constructor(
     private feedBackService: FeedbackService,
@@ -28,6 +30,8 @@ export class FeedbackComponent implements OnInit {
       (response) => {
         (this.feedBacks = response.data),
           this.toastrService.info('', response.message);
+        console.log(response.data);
+        let image: any = document.getElementById('image');
       },
       (responseError) => {
         console.log(responseError);

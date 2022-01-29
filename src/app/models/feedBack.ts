@@ -5,6 +5,7 @@ export interface FeedBack{
     email:string,
     title:string,
     description:string,
+    feedBackImage:string
     date:Date,
     status:boolean
 }

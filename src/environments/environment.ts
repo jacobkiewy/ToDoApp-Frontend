@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  feedBakcImageBasePath:'https://localhost:44392',
   baseUrl:'https://localhost:44392/api'
 };
 

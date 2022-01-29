@@ -31,10 +31,10 @@
               "./src/assets/all.min.css",
               "./node_modules/bootstrap/dist/css/bootstrap.css",
               "./node_modules/ngx-toastr/toastr.css",
+              "./node_modules/cropperjs/dist/cropper.min.css",
               "src/styles.css"
             ],
             "scripts": [
-              
               "./node_modules/bootstrap/dist/js/bootstrap.min.js",
               "./node_modules/jquery/dist/jquery.min.js"
             ]

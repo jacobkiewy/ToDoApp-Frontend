@@ -13,9 +13,9 @@ export class FeedbackService {
   private apiUrl = environment.baseUrl;
   constructor(private httpClient: HttpClient) {}
 
-  addFeedBack(feedBack: FeedBack) {
+  addFeedBack(feedBack: FormData) {
     let newPath = this.apiUrl + '/FeedBack/add';
-    return this.httpClient.post<ResponseModel>(newPath, feedBack);
+    return this.httpClient.post<ResponseModel>(newPath,feedBack);
   }
   deleteFeedBack(feedBack: FeedBack) {
     let newPath = this.apiUrl + '/feedback/delete';

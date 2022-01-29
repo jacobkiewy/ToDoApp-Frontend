@@ -17,6 +17,7 @@
         <p class="card-text">
           {{ feedBack.description }}
         </p>
+        <img [src]="imagePath+feedBack.feedBackImage" id="image" width="50">
       </div>
       <div class="card-footer bg-transparent border-light d-flex justify-content-between align-items-center">
         {{ feedBack.date | filterDate }}

@@ -23,12 +23,51 @@
             maxlength="150"
             placeholder="Description"
             class="form-control"
-            id="exampleFormControlTextarea1"
+            id="exampleFormControlInput2"
             rows="5"
           ></textarea>
         </div>
-        <button style="float: right;" (click)="addFeedBack()" class="btn btn-info">Gönder</button>
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label">Image</label>
+          <input
+            type="file"
+            formControlName="image"
+            (change)="onSelectFile($event)"
+            accept=".png, .jpg, .jpeg"
+            class="form-control"
+            maxlength="75"
+            id="exampleFormControlInput1"
+            placeholder="Image"
+          />
+        </div>
+        <button
+          style="float: right"
+          (click)="addFeedBack()"
+          [disabled]="!outputImage"
+          class="btn btn-info"
+        >
+          Gönder
+        </button>
+        <Button
+          class="btn btn-warning"
+          id="cropBtn"
+          (click)="getCroppedImage()"
+          [disabled]="!url"
+          
+          >Crop Image</Button
+        >
       </form>
     </div>
+    <br>
+    <div [style]="cropDiv">
+      <div >
+        <img id="image" [src]="url" style="width: 30rem" />
+      </div>
+      <div
+        class="imgPreview"
+        style="overflow: hidden; width: 75%; height: 75%"
+      ></div>
+    </div>
+    <img [src]="outputImage" width="50%">
   </div>
 </div>
